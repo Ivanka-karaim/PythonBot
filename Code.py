@@ -37,7 +37,7 @@ async def send_woman(message: types.Message):
     woman = InlineKeyboardMarkup()
     woman.add(InlineKeyboardButton(text="Верхній одяг", callback_data="Outerwear_woman"))
     woman.add(InlineKeyboardButton(text="Толстовки", callback_data="Hoodies_woman"))
-    woman.add(InlineKeyboardButton(text="Блузки", callback_data="Blouses_woman"))
+    woman.add(InlineKeyboardButton(text="Блузки", callback_data="Accessories_woman"))
     woman.add(InlineKeyboardButton(text="Штани", callback_data="Pants_woman"))
     woman.add(InlineKeyboardButton(text="Білизна", callback_data="Underwear_woman"))
     await message.answer("Оберіть:", reply_markup=woman)
@@ -53,7 +53,7 @@ async def send_man(message: types.Message):
     man = InlineKeyboardMarkup()
     man.add(InlineKeyboardButton(text="Верхній одяг", callback_data="Outerwear_man"))
     man.add(InlineKeyboardButton(text="Толстовки", callback_data="Hoodies_man"))
-    man.add(InlineKeyboardButton(text="Сорочки", callback_data="Shirts_man"))
+    man.add(InlineKeyboardButton(text="Сорочки", callback_data="Accessories_man"))
     man.add(InlineKeyboardButton(text="Штани", callback_data="Pants_man"))
     man.add(InlineKeyboardButton(text="Білизна", callback_data="Underwear_man"))
     await message.answer("Оберіть:", reply_markup=man)
@@ -64,20 +64,20 @@ async def send_child(message: types.Message):
     children = InlineKeyboardMarkup()
     children.add(InlineKeyboardButton(text="Верхній одяг", callback_data="Outerwear_child"))
     children.add(InlineKeyboardButton(text="Толстовки", callback_data="Hoodies_child"))
-    children.add(InlineKeyboardButton(text="Сорочки", callback_data="Shirts_child"))
+    children.add(InlineKeyboardButton(text="Сорочки", callback_data="Accessories_child"))
     children.add(InlineKeyboardButton(text="Штани", callback_data="Pants_child"))
     children.add(InlineKeyboardButton(text="Білизна", callback_data="Underwear_child"))
     await message.answer("Оберіть:", reply_markup=children)
 
 
-@dp.callback_query_handler(text="Shirts_man")
-async def send_shirts(call: CallbackQuery):
-    await call.message.answer("Shirts_man")
+@dp.callback_query_handler(text="Accessories_man")
+async def send_accessories(call: CallbackQuery):
+    await call.message.answer("Accessories_man")
 
 
-@dp.callback_query_handler(text="Shirts_child")
-async def send_shirts(call: CallbackQuery):
-    await call.message.answer("Shirts_child")
+@dp.callback_query_handler(text="Accessories_child")
+async def send_accessories(call: CallbackQuery):
+    await call.message.answer("Accessories_child")
 
 
 @dp.callback_query_handler(text="Outerwear_man")
@@ -110,9 +110,9 @@ async def send_hoodies(call: CallbackQuery):
     await call.message.answer("Hoodies_child")
 
 
-@dp.callback_query_handler(text="Blouses_woman")
-async def send_blouses(call: CallbackQuery):
-    await call.message.answer("Blouses_woman")
+@dp.callback_query_handler(text="Accessories_woman")
+async def send_accessories(call: CallbackQuery):
+    await call.message.answer("Accessories_woman")
 
 
 @dp.callback_query_handler(text="Pants_man")
@@ -163,7 +163,6 @@ async def send_inform(message: types.Message):
     inform_button.add(KeyboardButton('Переглянути інформацію про магазин'))
     inform_button.add(KeyboardButton('Back'))
     await message.reply('Оберіть вид інформації', reply_markup=inform_button)
-
 
 
 @dp.message_handler()
